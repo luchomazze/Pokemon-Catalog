@@ -47,7 +47,7 @@ export function getTypes(name) {
 export function postPokemon(payload) {
   return async function (dispatch) {
     var res = await axios.post("http://localhost:3001/pokemon", payload);
-    console.log(res);
+    console.log(res,payload);
     return res;
   };
 }

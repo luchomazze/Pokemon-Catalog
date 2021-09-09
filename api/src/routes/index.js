@@ -11,7 +11,7 @@ const { Pokemon, Types } = require("../db");
 const getApiInfo = async () => {
   const apiInfo = await axios.get("https://pokeapi.co/api/v2/pokemon/");
   let urls = apiInfo.data.results.map((pokemon) => axios.get(pokemon.url));
-  let a = await Promise.all(urls)
+  let a = await Promise.all(urls);
   const pokemons = a.map((pokemon) => {
     return {
       name: pokemon.data.name,
@@ -43,9 +43,9 @@ const getApiInfo = async () => {
   //   } catch (err) {
   //     console.log("vofi", err);
   //   }
-    // console.log(pokemons[i].details)
-    //console.log(pokemons[i].details.stats)
-  
+  // console.log(pokemons[i].details)
+  //console.log(pokemons[i].details.stats)
+
   return pokemons;
 };
 
@@ -87,7 +87,7 @@ router.get("/pokemons", async (req, res) => {
 router.get("/types", async (req, res) => {
   //Consultar flat
   const typesApi = await axios.get("https://pokeapi.co/api/v2/type"); //ingreso mi url donde estan los tipos.
-  const types = typesApi.data.results.map((e) => e.name); //aca se trae el arreglo de ocupaciones, en nuestro caso es types. lo mapea y se lo guarda de una.
+  const types = typesApi.data.results.map((e) => e.name); //aca se trae el arreglo de types, en nuestro caso es types. lo mapea y se lo guarda de una.
   types.forEach((type) => {
     Types.findOrCreate({
       where: { name: type },
@@ -98,19 +98,34 @@ router.get("/types", async (req, res) => {
 });
 
 router.post("/pokemon", async (req, res) => {
-  let { name, image, height, weight, stats, createdInDb, type } = req.body;
+  let {
+    name,
+    height,
+    weight,
+    id,
+    image,
+    types,
+    vida,
+    fuerza,
+    defensa,
+    velocidad,
+  } = req.body;
 
   let pokeCreated = await Pokemon.create({
     name,
-    image,
     height,
     weight,
-    stats,
-    createdInDb,
+    id,
+    image,
+    types,
+    vida,
+    fuerza,
+    defensa,
+    velocidad,
   });
 
   let typeDb = await Types.findAll({
-    where: { name: type },
+    where: { name: types },
   });
   pokeCreated.addTypes(typeDb); //averiguar sobre estos metodos que nacen de belongs to many  o lo que sea.
   res.send("Pokecreacion exitosa"); // debería ser, add o set + el nombre de la tabla: ej.: addTypes. (Mi tabla nose si se llama types O.o)
