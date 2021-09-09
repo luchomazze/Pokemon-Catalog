@@ -111,6 +111,7 @@ router.post("/pokemon", async (req, res) => {
     velocidad,
   } = req.body;
 
+  
   let pokeCreated = await Pokemon.create({
     name,
     height,
