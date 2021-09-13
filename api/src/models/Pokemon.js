@@ -18,6 +18,31 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    height: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    weight: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    vida: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    fuerza: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    defensa: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    velocidad: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+
     createdInDb:{
       type: DataTypes.BOOLEAN,
       allowNull: false,
