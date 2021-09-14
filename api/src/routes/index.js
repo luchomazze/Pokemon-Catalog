@@ -69,7 +69,6 @@ router.get("/pokemons", async (req, res) => {
 });
 
 router.get("/types", async (req, res) => {
-  //Consultar flat
   const typesApi = await axios.get("https://pokeapi.co/api/v2/type"); //ingreso mi url donde estan los tipos.
   const types = typesApi.data.results.map((e) => e.name); //aca se trae el arreglo de types lo mapea y se lo guarda de una.
   types.forEach((type) => {
