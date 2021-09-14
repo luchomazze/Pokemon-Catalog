@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column-reverse;
+  margin: 50px 10px 10px 10px;
+}
+
+h1{
+    padding: 10px;
+    font-size:40px;
+}
+
+.types{
+  display: flex;
+  flex-direction: row;
+  margin:5px;
+  color: #fff;
+}
+
+.type{
+margin-left:5px;  
+}
+
+p{
+  color: #fff;
+}

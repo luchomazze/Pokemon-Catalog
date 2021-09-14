@@ -1,0 +1,40 @@
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    margin-bottom: 11px;
+}
+/* Buscar cambiar css logo? nose  */
+.logo{ 
+    font-size:100px;
+    text-transform: uppercase;
+    padding:0%;
+}
+
+
+ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items:center;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+li{
+    font-size:14px;
+    margin-left:1px;
+    padding:5px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+}
+
+.searchBar{
+color: #fff;
+cursor: pointer;
+ 
+}

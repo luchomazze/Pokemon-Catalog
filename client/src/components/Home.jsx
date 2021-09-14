@@ -5,8 +5,9 @@ import { getPokemons, getTypes, filterPokemonByTypes, filterPokemonByCreated, or
 import {Link}  from "react-router-dom";
 import Card from "./Card";
 import Paginado from "./Paginado";
-import SearchBar from "./SearchBar";
 import PokeCreate from "./PokeCreate";
+import styles from "./styles/Home.module.css"
+import Footer from "./Footer"
 
 
 export default function Home() {
@@ -22,7 +23,8 @@ export default function Home() {
     indexOfLastPokemon
   );
   const types = useSelector((state) => state.types);
-
+   useSelector((state) => state.detail = []);
+  
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -32,7 +34,6 @@ export default function Home() {
     dispatch(getPokemons());
     dispatch(getTypes());
   }, [dispatch]);
-  console.log("home",types)
 
   function handleClick(e) {
     e.preventDefault();
@@ -63,12 +64,15 @@ export default function Home() {
 
 
   return (
-    <div>
-      <Link to="/create">PokeCreacion</Link>
-      <h1>PokeTitulo!</h1>
-      <button onClick={(e) => handleClick(e)}>Volver a cargar</button>
+    <div className={styles.divContainer}>
+    <div className={styles.divContainer2}>
+    <div className={styles.divContainer3}>
+    {/* <div className={styles.divContainer4}> */}
+    <div className={styles.home}>
+     
+      {/* <button onClick={(e) => handleClick(e)}>Volver a cargar</button> */}
 
-      <div>
+      <div className={styles.filters}>
         <select onChange={e=> handleOrder(e)}>
           <option value="asc">Orden Ascendente</option>
           <option value="desc">Orden Descendente</option>
@@ -112,23 +116,27 @@ export default function Home() {
           allPokemons={allPokemons.length}
           paginado={paginado}
         />
-        <SearchBar/>
       </div>
-      <div className="cards">
+      <div className={styles.cards}>
         {currentPokemons?.map((pokemon) => {
           return (
-            <fragment>
-              <Link to={"/home/" + pokemon.id}>
+            <div >
+              <Link to={"/home/" + pokemon.id} style= {{"text-decoration":" none"}}>
               <Card
                 name={pokemon.name}
                 image={pokemon.image}
-                types={pokemon.types}
+                types={pokemon.createdInDb? pokemon.types.map(e=>e.name) : pokemon.types}
                 id={pokemon.id}
               />
               </Link>
-            </fragment>
+            </div>
           );
         })}
+      </div>
+      {/* </div> */}
+      </div>
+      <Footer/>
+      </div>
       </div>
     </div>
   );

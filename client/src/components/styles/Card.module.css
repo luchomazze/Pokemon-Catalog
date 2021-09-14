@@ -1,0 +1,39 @@
+.card{
+    width: 150px;
+    height: 270px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    color: #ac0031;
+    text-decoration: none;
+    padding: 11px;
+    margin: 30px;
+    margin-left: 3px;
+    transition: 0.3s ease-in-out;
+    background-color: #cdcdcd
+   
+}
+
+.card:hover{
+    transform:scale(1.1);
+}
+
+.imagen{
+    background-image: url("../blob.svg");
+    transition: 0.4s ease-in-out ;
+}
+.imagen:hover{
+    box-shadow: 10px;
+    transform:scale(1.15);
+}
+
+.types{
+    background-color: #dde3e4;
+    border-radius: 15px;
+    margin: 1px;
+    align-items: center;
+    justify-content: center;
+}

@@ -3,6 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { postPokemon } from "../actions";
 import { getTypes } from "../actions";
+import styles from "./styles/PokeCreate.module.css";
 
 function validate(input) {
   let errors = {};
@@ -89,15 +90,15 @@ export default function PokeCreate() {
   }
 
   return (
-    <div>
-      <Link to="/home">
-        <button>Home</button>
-      </Link>
-      <h1>PokeCreacion!</h1>
+    <div className={styles.content}>
+           <img src="https://fontmeme.com/permalink/210913/9bb8b855c15c20565c93abd19189106a.png" alt="" high="300px" width="300px" />
       <form onSubmit={handleSubmit}>
+        <div className={styles.inputs}>
         <div>
           <label>Nombre: </label>{" "}
           <input
+          className={styles.input}
+          required="required"
             type="text"
             value={input.name}
             name="name"
@@ -108,6 +109,8 @@ export default function PokeCreate() {
         <div>
           <label>image: </label>
           <input
+          className={styles.input}
+          required="required"
             type="text"
             value={input.image}
             name="image"
@@ -118,6 +121,8 @@ export default function PokeCreate() {
         <div>
           <label>peso: </label>
           <input
+          className={styles.input}
+          required="required"
             type="text"
             value={input.weight}
             name="weight"
@@ -128,6 +133,8 @@ export default function PokeCreate() {
         <div>
           <label>altura: </label>
           <input
+          className={styles.input}
+          required="required"
             type="text"
             value={input.height}
             name="height"
@@ -138,6 +145,8 @@ export default function PokeCreate() {
         <div>
           <label>vida: </label>
           <input
+          className={styles.input}
+          required="required"
             type="text"
             value={input.vida}
             name="vida"
@@ -148,6 +157,8 @@ export default function PokeCreate() {
         <div>
           <label>fuerza: </label>
           <input
+          className={styles.input}
+          required="required"
             type="text"
             value={input.fuerza}
             name="fuerza"
@@ -158,6 +169,8 @@ export default function PokeCreate() {
         <div>
           <label>defensa: </label>
           <input
+          className={styles.input}
+          required="required"
             type="text"
             value={input.defensa}
             name="defensa"
@@ -168,6 +181,8 @@ export default function PokeCreate() {
         <div>
           <label>velocidad: </label>
           <input
+          className={styles.input}
+          required="required"
             type="text"
             value={input.velocidad}
             name="velocidad"
@@ -176,25 +191,25 @@ export default function PokeCreate() {
         {errors.velocidad&&(<label className="error"> {errors.velocidad}</label>)}
           
         </div>
-        Acomodar checked o no cheked, para que se
-        <div>
-          <label>tipo: </label>
+        </div>
+       
+        <div className={styles.types}>
 
           {types.map((type) => {
             return (
-              <>
-                <label>{type.name}</label>
-                <input
+              <div className={styles.type}>
+                <label>{type.name}  </label>
+                <input 
                   type="checkbox"
                   value={type.name}
                   name={type.name}
                   onChange={(e) => handleCheckbox(e)}
                 />
-              </>
+              </ div>
             );
           })}
         </div>
-        <button type="submit" onSubmit={(e) => handleSubmit(e)}>
+        <button className={styles.btn} ontype="submit"  onSubmit={(e) => handleSubmit(e)}>
           PokeCreacion
         </button>
       </form>
