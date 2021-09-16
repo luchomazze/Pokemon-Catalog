@@ -13,7 +13,6 @@ export default function Home() {
   const dispatch = useDispatch();
   const allPokemons = useSelector((state) => state.pokemons);
   const [currentPage, setCurrentPage] = useState(1);
-  const [orden, setOrden] = useState("");
   const [pokemonsPerPage, setPokemonsPerPage] = useState(9);
   const indexOfLastPokemon = currentPage * pokemonsPerPage; //
   const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage;
@@ -33,10 +32,6 @@ export default function Home() {
     dispatch(getTypes());
   }, [dispatch]);
 
-  // function handleClick(e) {
-  //   e.preventDefault();
-  //   dispatch(getPokemons());
-  // }
 
   function handleFilterTypes(e){
     dispatch(filterPokemonByTypes(e.target.value))    
@@ -65,7 +60,6 @@ export default function Home() {
     <div className={styles.divContainer3}>
     <div className={styles.home}>
      
-      {/* <button onClick={(e) => handleClick(e)}>Volver a cargar</button> */}
 
       <div className={styles.filters}>
         <Paginado
@@ -116,20 +110,36 @@ export default function Home() {
         </select>
       </div>
       <div className={styles.cards}>
-        {currentPokemons?.map((pokemon) => {
-          return (
-            <div >
-              <Link to={"/home/" + pokemon.id} style= {{"text-decoration":" none"}}>
-              <Card
-                name={pokemon.name}
-                image={pokemon.image}
-                types={pokemon.createdInDb? pokemon.types.map(e=>e.name) : pokemon.types}
-                id={pokemon.id}
-              />
-              </Link>
-            </div>
-          );
-        })}
+
+        {currentPokemons.length>0?
+
+          currentPokemons.map((pokemon) => {
+            return (
+              <div >
+                <Link to={"/home/" + pokemon.id} className={styles.Link}>
+                <Card
+                  name={pokemon.name}
+                  image={pokemon.image}
+                  types={pokemon.createdInDb? pokemon.types.map(e=>e.name) : pokemon.types}
+                  id={pokemon.id}
+                />
+                </Link>
+              </div>
+            );
+          })
+          
+        : 
+          <div className={styles.notype}> 
+            <img  className={styles.image} src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/200653/psykokwak.gif" alt="error" />
+              <div className={styles.Maestro}> 
+              <h3> Son sólo ciento cincuenta o más que ver,</h3>
+              <h3> Maestro Pokémon, tu destino es! </h3> 
+                <h3> Elige otro tipo! </h3>
+              </div>
+          </div>
+
+        }
+
       </div>
       {/* </div> */}
       </div>

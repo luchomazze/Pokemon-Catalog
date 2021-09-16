@@ -54,6 +54,17 @@
     
 }
 
+.image{
+    background-size: 1vw 1vw;
+    border-radius: 10071px;
+    height: 30vh;
+    width: 12vw;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    padding: 13px;
+  } 
 
 .filters{
     position: absolute;
@@ -70,8 +81,32 @@ select{
     font-size: 15px;
 }
 
+h3{
+    font-size:15px;
+}
+
 option{
     
     font-size: 15px;
 
+}
+
+.Link{
+    text-decoration : none;
+}
+
+.Maestro{
+    display: flex;
+    flex-direction: column;
+    width: 22vw;
+    align-content: center;
+    align-items: center;
+}
+
+.notype{
+    width: 6vw;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    margin-left: 14vw;
 }

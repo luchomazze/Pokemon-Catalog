@@ -1,20 +1,21 @@
 import React from 'react'
-import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux"
 import {getDetail} from "../actions/index";
 import {useEffect} from "react"
 import styles from "./styles/Detail.module.css"
+import { getPokemons} from "../actions";
 
 
 export default function Detail(props) {
     const dispatch = useDispatch()
     useEffect(()=>{
         dispatch(getDetail(props.match.params.id))
+        dispatch(getPokemons());
     },[dispatch])
     
     const pokemon = useSelector((state)=>state.detail)
-    let siguiente= parseInt(props.match.params.id) + 1;
-    let anterior= parseInt(props.match.params.id) - 1;
+    // let siguiente= parseInt(props.match.params.id) + 1;
+    // let anterior= parseInt(props.match.params.id) - 1;
 
 
     return (
@@ -59,9 +60,10 @@ export default function Detail(props) {
                 </div> 
              </div> 
              : 
-             <div> 
+             <div className={styles.buscando}> 
             <img  className={styles.image} src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/200653/psykokwak.gif" alt="error" />
-            <h3> Psyduck Loading... </h3>
+                <div className={styles.dot_elastic}> 
+                </div>
              </div>
              }
         </div>

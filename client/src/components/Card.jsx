@@ -10,12 +10,11 @@ export default function Card({name, image, types, id}) {
             <h3>{name}</h3>
             </div>
             <div className="card_img">
-            <img className={styles.imagen} src={image} alt="not found" width="150px" height="150px" key={id}/>
+            <img className={styles.imagen} src={image} alt="not found" width="150px" height="150px" key={image}/>
             </div>
-            <div className={styles.types}>
-            {types?.map(type => <div className={styles[type]}> {type.charAt(0).toUpperCase() + type.slice(1)}</div>)}
+            <div className={styles.types} >
+            {types?.map(type => <div className={styles[type]} key={type}> {type.charAt(0).toUpperCase() + type.slice(1)}</div>)}
             </div>
-            {/* <img src={image} alt="image not found" /> */}
 
         </div>
     )

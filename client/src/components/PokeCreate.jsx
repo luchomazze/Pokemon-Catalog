@@ -67,7 +67,6 @@ export default function PokeCreate() {
         //
       });
     }
-    console.log("input.tyes", input.types);
   }
 
   function handleSubmit(e) {
@@ -123,7 +122,8 @@ export default function PokeCreate() {
           <input
           className={styles.input}
           required="required"
-            type="text"
+            type="number"
+            min="1" max="1000"
             value={input.weight}
             name="weight"
             onChange={(e) => handleChange(e)}
@@ -135,7 +135,8 @@ export default function PokeCreate() {
           <input
           className={styles.input}
           required="required"
-            type="text"
+          type="number"
+          min="1" max="100"
             value={input.height}
             name="height"
             onChange={(e) => handleChange(e)}
@@ -147,7 +148,8 @@ export default function PokeCreate() {
           <input
           className={styles.input}
           required="required"
-            type="text"
+          type="number"
+          min="1" max="100"
             value={input.vida}
             name="vida"
             onChange={(e) => handleChange(e)}
@@ -159,7 +161,8 @@ export default function PokeCreate() {
           <input
           className={styles.input}
           required="required"
-            type="text"
+          type="number"
+          min="1" max="100"
             value={input.fuerza}
             name="fuerza"
             onChange={(e) => handleChange(e)}
@@ -171,7 +174,8 @@ export default function PokeCreate() {
           <input
           className={styles.input}
           required="required"
-            type="text"
+          type="number"
+          min="1" max="100"
             value={input.defensa}
             name="defensa"
             onChange={(e) => handleChange(e)}
@@ -183,7 +187,8 @@ export default function PokeCreate() {
           <input
           className={styles.input}
           required="required"
-            type="text"
+          type="number"
+          min="1" max="100"
             value={input.velocidad}
             name="velocidad"
             onChange={(e) => handleChange(e)}

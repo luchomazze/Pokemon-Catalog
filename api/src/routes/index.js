@@ -40,7 +40,6 @@ const getApiInfo = async () => {
 const getDbInfo = async () => {
   return await Pokemon.findAll({
     include: {
-      //Dudas con esto. Preguntar.
       model: Types,
       attributes: ["name"],
       through: {

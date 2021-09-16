@@ -45,13 +45,15 @@ form {
     border-radius: 14px;
     border: none;
     margin:1px;
+    font-size: 15px;
+    width: 19vw;
 }
 
 .inputs{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    align-items: end;
+    align-items: flex-end;
     padding-left: 392px;
     padding-right: 433px;
 }
