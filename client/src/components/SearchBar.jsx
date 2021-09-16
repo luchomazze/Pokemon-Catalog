@@ -21,11 +21,11 @@ export default function SearchBar(){
     }
 
     return (
-        <div>
+        <div className={styles.SearchBar1}>
+            <input type="text" placeholder=" PokeBusqueda..." className={styles.SearchBar} value = {name} onChange={(e)=>handleInputChange(e)}/>
             <button className={styles.button} type="submit" onClick={(e)=>handleSubmit(e)}>
-            <img src="https://fontmeme.com/permalink/210914/820bbd8d8302def3fadcee1d771af3a8.png" alt="" high="110px" width="110px"/>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/512px-Pok%C3%A9_Ball_icon.svg.png" alt="" high="40px" width="40px" margin-top="0px"/>
             </button>
-            <input type="text" placeholder="PokeBusqueda..." value = {name} onChange={(e)=>handleInputChange(e)}/>
         </div>
     )
 }

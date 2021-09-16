@@ -10,11 +10,15 @@ const { Pokemon, Types } = require("../db");
 // Ejemplo: router.use('/auth', authRouter);
 const getApiInfo = async () => {
   const apiInfo = await axios.get("https://pokeapi.co/api/v2/pokemon/");
-  let urls = apiInfo.data.results.map((pokemon) => axios.get(pokemon.url));
+  const apiInfo2 = await axios.get(apiInfo.data.next)
+  let urls1 = apiInfo.data.results.map((pokemon) => axios.get(pokemon.url));
+  let urls2 = apiInfo2.data.results.map((pokemon) => axios.get(pokemon.url));
+  let urls = urls1.concat(urls2);
   let a = await Promise.all(urls);
+
   const pokemons = a.map((pokemon) => {
     return {
-      name: pokemon.data.name,
+      name: pokemon.data.name.charAt(0).toUpperCase() + pokemon.data.name.slice(1),
       height: pokemon.data.height,
       weight: pokemon.data.weight,
       id: pokemon.data.id,
@@ -55,21 +59,24 @@ const getAllPokes = async () => {
 
 router.get("/pokemons", async (req, res) => {
   const name = req.query.name;
-  let pokeTotal = await getAllPokes();
-  if (name) {
-    let pokeName = await pokeTotal.filter((type) =>
-      type.name.toLowerCase().includes(name.toLowerCase())
-    );
-    pokeName.length
+  try{
+    let pokeTotal = await getAllPokes();
+    if (name) {
+      let pokeName = await pokeTotal.filter((pokemon) =>
+      pokemon.name.toLowerCase().includes(name.toLowerCase())
+      );
+      pokeName.length
       ? res.status(200).send(pokeName)
       : res.status(404).send("No hubo pokecoincidencias");
-  } else {
-    res.status(200).send(pokeTotal);
-  }
+    } else {
+      res.status(200).send(pokeTotal);
+    }
+      }catch(error){
+        console.log(error)}
 });
 
 router.get("/types", async (req, res) => {
-  const typesApi = await axios.get("https://pokeapi.co/api/v2/type"); //ingreso mi url donde estan los tipos.
+  try{const typesApi = await axios.get("https://pokeapi.co/api/v2/type"); //ingreso mi url donde estan los tipos.
   const types = typesApi.data.results.map((e) => e.name); //aca se trae el arreglo de types lo mapea y se lo guarda de una.
   types.forEach((type) => {
     Types.findOrCreate({
@@ -78,6 +85,9 @@ router.get("/types", async (req, res) => {
   });
   const alltypes = await Types.findAll();
   res.send(alltypes);
+}catch(error){
+console.log(error);
+}
 });
 
 router.post("/pokemon", async (req, res) => {

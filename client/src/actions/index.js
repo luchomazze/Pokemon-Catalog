@@ -80,6 +80,18 @@ export function orderPokemonByStrength(payload) {
 }
 
 export function getDetail(id){
+
+  // return (dispatch
+  //   )=> new Promise((res, rej)=>{
+  //     res(axios.get("http://localhost:3001/pokemons/" + id ))
+  //     rej(console.log("no encontrada esa id"))
+  //   }).then( (res, rej) => {
+  //   return dispatch ({
+  //     type: "GET_DETAILS",
+  //     payload: res.data
+  //   })
+  // })
+console.log(id)
   return async function (dispatch) {
     try {
       var json = await axios.get("http://localhost:3001/pokemons/" + id );

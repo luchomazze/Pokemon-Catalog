@@ -10,7 +10,17 @@ h1{
 
 .imagen{
     padding: 30px;
-    transition: ease-in 1s;
+    transition: in 1s;
+    animation: beat 2s;
+    transform-origin: center;
+  }
+  
+  /* Heart beat animation */
+  @keyframes beat{
+   
+    20% {
+      transform: scale(4)
+    }
 }
 
 .imagen::before{
@@ -112,6 +122,6 @@ h1{
       }
 
       .button{
-        background-color: #399494;
+        background-color: transparent;
         border: none;
       }

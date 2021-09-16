@@ -56,7 +56,7 @@ function rootReducer(state = initialState, action) {
       case "ORDER_BY_STRENGHT":
         const pokes = state.allPokemons;
         const orderedByStrength =
-          action.payload === "asc"?
+          action.payload === "asc" ?
            pokes.sort(function (a, b) {
                 if (a.name > b.name) return 1;
                 if (a.name < b.name) return -1;
@@ -91,9 +91,10 @@ function rootReducer(state = initialState, action) {
         }
       
       case "GET_DETAILS":
+        console.log(action.payload)
         return{
           ...state,
-          detail: action.payload
+          detail: action.payload.slice()
         }
             
     default:

@@ -9,7 +9,7 @@ function validate(input) {
   let errors = {};
   for (const property in input) {
     if (input[property] === "" || input[property] === [])
-      errors[property] = `Tu Pokemón debería tener ${property}!`;
+      errors[property] = "*";
     console.log(`${property}: ${input[property]}`);
   }
   return errors;
@@ -75,6 +75,7 @@ export default function PokeCreate() {
     console.log("submit input", input);
     dispatch(postPokemon(input));
     alert("PokeCreacion exitosa!");
+    history.push("/home/");
     setInput({
       name: "",
       height: "",
@@ -86,7 +87,6 @@ export default function PokeCreate() {
       defensa: "",
       velocidad: "",
     });
-    history.push("/home");
   }
 
   return (
@@ -107,7 +107,7 @@ export default function PokeCreate() {
           {errors.name && <label className="error"> {errors.name}</label>}
         </div>
         <div>
-          <label>image: </label>
+          <label>Imagen: </label>
           <input
           className={styles.input}
           required="required"
@@ -119,7 +119,7 @@ export default function PokeCreate() {
           {errors.image && <label className="error"> {errors.image}</label>}
         </div>
         <div>
-          <label>peso: </label>
+          <label>Peso: </label>
           <input
           className={styles.input}
           required="required"
@@ -131,7 +131,7 @@ export default function PokeCreate() {
           {errors.weight && <label className="error"> {errors.weight}</label>}
         </div>
         <div>
-          <label>altura: </label>
+          <label>Altura: </label>
           <input
           className={styles.input}
           required="required"
@@ -143,7 +143,7 @@ export default function PokeCreate() {
         {errors.height&&(<label className="error"> {errors.height}</label>)}
         </div>
         <div>
-          <label>vida: </label>
+          <label>Vida: </label>
           <input
           className={styles.input}
           required="required"
@@ -155,7 +155,7 @@ export default function PokeCreate() {
         {errors.vida&&(<label className="error"> {errors.vida}</label>)}
         </div>
         <div>
-          <label>fuerza: </label>
+          <label>Fuerza: </label>
           <input
           className={styles.input}
           required="required"
@@ -167,7 +167,7 @@ export default function PokeCreate() {
         {errors.fuerza&&(<label className="error"> {errors.fuerza}</label>)}
         </div>
         <div>
-          <label>defensa: </label>
+          <label>Defensa: </label>
           <input
           className={styles.input}
           required="required"
@@ -179,7 +179,7 @@ export default function PokeCreate() {
         {errors.defensa&&(<label className="error"> {errors.defensa}</label>)}
         </div>
         <div>
-          <label>velocidad: </label>
+          <label>Velocidad: </label>
           <input
           className={styles.input}
           required="required"
@@ -198,7 +198,7 @@ export default function PokeCreate() {
           {types.map((type) => {
             return (
               <div className={styles.type}>
-                <label>{type.name}  </label>
+                <label>{type.name.charAt(0).toUpperCase()+ type.name.slice(1)} </label>
                 <input 
                   type="checkbox"
                   value={type.name}

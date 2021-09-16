@@ -2,4 +2,26 @@
     background-color: transparent;
     border: none;
     padding: 0.5em 0.5em 0.5em 0.5em;
+    margin-top: 2px;
 }
+
+
+.SearchBar{
+    color: rgb(172, 172, 172);
+    cursor: pointer;
+    border-radius: 15px;
+    width: 170px;
+    border: none;
+    padding: 3px;
+    height: 30px;
+    margin: 13px;
+    margin-top: 17px;
+    margin-right: -29px;
+    font-size: 15px;
+    }
+
+.SearchBar1{
+    display: flex;
+    flex-direction: row;
+    margin: 0px;
+    }

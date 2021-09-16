@@ -12,8 +12,8 @@ export default function Card({name, image, types, id}) {
             <div className="card_img">
             <img className={styles.imagen} src={image} alt="not found" width="150px" height="150px" key={id}/>
             </div>
-            <div >
-            <h5>{types?.map(type => <div className={styles.types}> {type}</div>)}</h5>
+            <div className={styles.types}>
+            {types?.map(type => <div className={styles[type]}> {type.charAt(0).toUpperCase() + type.slice(1)}</div>)}
             </div>
             {/* <img src={image} alt="image not found" /> */}
 

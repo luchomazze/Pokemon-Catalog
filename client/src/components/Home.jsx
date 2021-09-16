@@ -5,7 +5,6 @@ import { getPokemons, getTypes, filterPokemonByTypes, filterPokemonByCreated, or
 import {Link}  from "react-router-dom";
 import Card from "./Card";
 import Paginado from "./Paginado";
-import PokeCreate from "./PokeCreate";
 import styles from "./styles/Home.module.css"
 import Footer from "./Footer"
 
@@ -30,15 +29,14 @@ export default function Home() {
   };
   
   useEffect(() => {
-    //aprender sobre estos hooks porque nunca los usamos creo!
     dispatch(getPokemons());
     dispatch(getTypes());
   }, [dispatch]);
 
-  function handleClick(e) {
-    e.preventDefault();
-    dispatch(getPokemons());
-  }
+  // function handleClick(e) {
+  //   e.preventDefault();
+  //   dispatch(getPokemons());
+  // }
 
   function handleFilterTypes(e){
     dispatch(filterPokemonByTypes(e.target.value))    
@@ -52,14 +50,12 @@ export default function Home() {
     e.preventDefault()
     dispatch(orderPokemonByStrength(e.target.value))
     setCurrentPage(1)
-    setOrden(`Ordenado ${e.target.value}`)
     }
   
   function handleOrder(e){
     e.preventDefault()
     dispatch(orderPokemonByName(e.target.value))
     setCurrentPage(1)
-    setOrden(`Ordenado ${e.target.value}`)
     }
 
 
@@ -67,20 +63,33 @@ export default function Home() {
     <div className={styles.divContainer}>
     <div className={styles.divContainer2}>
     <div className={styles.divContainer3}>
-    {/* <div className={styles.divContainer4}> */}
     <div className={styles.home}>
      
       {/* <button onClick={(e) => handleClick(e)}>Volver a cargar</button> */}
 
       <div className={styles.filters}>
+        <Paginado
+          pokemonsPerPage={pokemonsPerPage}
+          allPokemons={allPokemons.length}
+          paginado={paginado}
+        />
         <select onChange={e=> handleOrder(e)}>
-          <option value="asc">Orden Ascendente</option>
-          <option value="desc">Orden Descendente</option>
+          <option value="">- </option>
+          <option value="asc">A-Z</option>
+          <option value="desc">Z-A</option>
         </select>
 
         <select onChange={e=> handleStrength(e)}>
-          <option value="asc">Fuerza Ascendente</option>
-          <option value="desc">Fuerza Descendente</option>
+          <option value="">- </option>
+          <option value="asc">Fuerza ↑</option>
+          <option value="desc">Fuerza ↓</option>
+        </select>
+
+
+        <select onChange={e => handleFilterByCreated(e)}>
+          <option value="All">Todos</option>
+          <option value="created">creados</option>
+          <option value="Api">existentes</option>
         </select>
 
         <select onChange={e=> handleFilterTypes(e)}>
@@ -105,17 +114,6 @@ export default function Home() {
           <option value="fairy">fairy</option>
           <option value="unknown">unknown</option>
         </select>
-
-        <select onChange={e => handleFilterByCreated(e)}>
-          <option value="All">Todos</option>
-          <option value="created">creados</option>
-          <option value="Api">existentes</option>
-        </select>
-        <Paginado
-          pokemonsPerPage={pokemonsPerPage}
-          allPokemons={allPokemons.length}
-          paginado={paginado}
-        />
       </div>
       <div className={styles.cards}>
         {currentPokemons?.map((pokemon) => {

@@ -3,9 +3,9 @@
   padding:0;
   box-sizing: border-box;
   cursor: url(https://i.imgur.com/CpdoEln.png),auto;
-    font-size: 20px;
-    font-weight: 400;
-    font-family: "Josefin Slab",serif;
+  font-size: 21px;
+      font-weight: 400;
+    font-family: system-ui;
 }
 
 
@@ -23,17 +23,15 @@ body{
   height:100%;
   /* position:relative; */
   font-family: "Varela Round";
-  background-color: #399494
+  background-color: #399494;  
+  transition: background-color 1s linear;
+
 
 }
 
-.app{
-  /* display: flex; */
-  /* flex-direction: column;
-  width:100%;
-  height:100%;
-  padding: 30px 50px 20px 50px;
-  box-sizing: border-box;
-  background-color: rgb(248, 161, 0) */
 
+
+/* the :hover that causes the background-color to change */
+body:hover {
+   background-color: .5 transparent     
 }

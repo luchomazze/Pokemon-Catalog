@@ -14,6 +14,7 @@ form {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 70vw
 }
 
 .types{
@@ -29,12 +30,14 @@ form {
 }
 
 .type{
-    padding: 2px;
-    background-color: #fff;
-    border-radius: 10px;
-    margin: 1px;
-    align-items: center;
-    display: flex;
+    background-color: #ebebeb;
+    border-radius: 3px;
+    margin: 1px 2px 1px 2px;
+   
+    font-size: 15px;
+    padding: 1px 5px 1px 6px;
+    color:gray;
+    box-shadow: 1px 1px 1px;
 
 }
 
@@ -49,10 +52,20 @@ form {
     flex-direction: column;
     flex-wrap: wrap;
     align-items: end;
-    padding-left: 433px;
+    padding-left: 392px;
     padding-right: 433px;
 }
 
 .btn{
     margin-right: 530px;
+    padding: 8px;
+    color: #184a4a;
+    border-radius: 20px;
+    background-color: #d0eef2;
+    box-shadow: 3px 4px #cdcdcd;
+    border-color: azure;
+}
+
+label{
+    color: #184a4a;
 }
